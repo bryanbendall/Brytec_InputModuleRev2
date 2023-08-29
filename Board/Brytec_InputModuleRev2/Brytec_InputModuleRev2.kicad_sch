@@ -1,0 +1,116 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid 864fef88-c423-4aec-8cdb-64a78dd6f95c)
+
+  (paper "A4")
+
+  (lib_symbols
+  )
+
+
+  (sheet (at 43.18 68.58) (size 29.21 20.32) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 016a6ebb-7772-4877-99ad-a7f632fdf06c)
+    (property "Sheetname" "TLE94112ES" (at 43.18 67.8684 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "TLE94112ES.kicad_sch" (at 43.18 89.4846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "Brytec_InputModuleRev2"
+        (path "/864fef88-c423-4aec-8cdb-64a78dd6f95c" (page "7"))
+      )
+    )
+  )
+
+  (sheet (at 91.44 34.29) (size 27.94 17.78) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 08375bf5-7139-4efa-85e3-4c45461a371d)
+    (property "Sheetname" "L9966" (at 91.44 33.5784 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "L9966.kicad_sch" (at 91.44 52.6546 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "Brytec_InputModuleRev2"
+        (path "/864fef88-c423-4aec-8cdb-64a78dd6f95c" (page "3"))
+      )
+    )
+  )
+
+  (sheet (at 135.89 34.29) (size 31.75 17.78) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 2338b0ec-7d7a-46ba-9ca6-d30cb7867cd0)
+    (property "Sheetname" "CanBus" (at 135.89 33.5784 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "CanBus.kicad_sch" (at 135.89 52.6546 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "Brytec_InputModuleRev2"
+        (path "/864fef88-c423-4aec-8cdb-64a78dd6f95c" (page "4"))
+      )
+    )
+  )
+
+  (sheet (at 191.77 33.02) (size 26.67 19.05) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 64acb1d2-e517-441c-9dbb-5ffcf983d8fb)
+    (property "Sheetname" "Connectors" (at 191.77 32.3084 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "Connectors.kicad_sch" (at 191.77 52.6546 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "Brytec_InputModuleRev2"
+        (path "/864fef88-c423-4aec-8cdb-64a78dd6f95c" (page "5"))
+      )
+    )
+  )
+
+  (sheet (at 238.76 34.29) (size 27.94 17.78) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid ce024229-7448-493f-b081-e7a45f8a0eeb)
+    (property "Sheetname" "PowerRegulation" (at 238.76 33.5784 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "PowerRegulation.kicad_sch" (at 238.76 52.6546 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "Brytec_InputModuleRev2"
+        (path "/864fef88-c423-4aec-8cdb-64a78dd6f95c" (page "6"))
+      )
+    )
+  )
+
+  (sheet (at 40.64 34.29) (size 30.48 17.78) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid d03df645-e62f-4b9d-b5be-846130bfd715)
+    (property "Sheetname" "Mcu" (at 40.64 33.5784 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "Mcu.kicad_sch" (at 40.64 52.6546 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "Brytec_InputModuleRev2"
+        (path "/864fef88-c423-4aec-8cdb-64a78dd6f95c" (page "2"))
+      )
+    )
+  )
+
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+)
