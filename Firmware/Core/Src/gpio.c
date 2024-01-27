@@ -54,8 +54,8 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, Can1Silent_Pin|L9966_Rst_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, TLE94112_EN_Pin|Memory_Hold_Pin|Memory_Wp_Pin|SPI1_SS_Pin
-                          |SPI2_SS_L9966_Pin|L9966_Sync_Pin|User_Led_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, TLE94112_EN_Pin|Memory_Hold_Pin|Memory_Wp_Pin|Memory_SS_Pin
+                          |SPI_SS_L9966_Pin|L9966_Sync_Pin|User_Led_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, SPI2_SS_TLE94112_Pin|Can2Silent_Pin, GPIO_PIN_RESET);
@@ -69,8 +69,8 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PAPin PAPin PAPin PAPin
                            PAPin PAPin PAPin */
-  GPIO_InitStruct.Pin = TLE94112_EN_Pin|Memory_Hold_Pin|Memory_Wp_Pin|SPI1_SS_Pin
-                          |SPI2_SS_L9966_Pin|L9966_Sync_Pin|User_Led_Pin;
+  GPIO_InitStruct.Pin = TLE94112_EN_Pin|Memory_Hold_Pin|Memory_Wp_Pin|Memory_SS_Pin
+                          |SPI_SS_L9966_Pin|L9966_Sync_Pin|User_Led_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

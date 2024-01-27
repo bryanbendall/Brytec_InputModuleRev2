@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "cppMain.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,7 +94,7 @@ int main(void)
   MX_SPI2_Init();
   MX_USB_Device_Init();
   /* USER CODE BEGIN 2 */
-
+  cppMain();
   /* USER CODE END 2 */
 
   /* Infinite loop */

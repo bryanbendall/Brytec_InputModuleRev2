@@ -67,12 +67,12 @@ void Error_Handler(void);
 #define Memory_Hold_GPIO_Port GPIOA
 #define Memory_Wp_Pin GPIO_PIN_3
 #define Memory_Wp_GPIO_Port GPIOA
-#define SPI1_SS_Pin GPIO_PIN_4
-#define SPI1_SS_GPIO_Port GPIOA
+#define Memory_SS_Pin GPIO_PIN_4
+#define Memory_SS_GPIO_Port GPIOA
 #define L9966_Rst_Pin GPIO_PIN_6
 #define L9966_Rst_GPIO_Port GPIOC
-#define SPI2_SS_L9966_Pin GPIO_PIN_8
-#define SPI2_SS_L9966_GPIO_Port GPIOA
+#define SPI_SS_L9966_Pin GPIO_PIN_8
+#define SPI_SS_L9966_GPIO_Port GPIOA
 #define L9966_Sync_Pin GPIO_PIN_9
 #define L9966_Sync_GPIO_Port GPIOA
 #define L9966_Int_Pin GPIO_PIN_10
