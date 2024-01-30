@@ -76,6 +76,8 @@ USB_Device/Target/usbd_conf.c
 
 
 CPP_SOURCES = \
+App/BoardHardware.cpp \
+App/CanBusDefs.cpp \
 App/InputModuleRev2Board.cpp \
 App/cppMain.cpp \
 BrytecConfigEmbedded/Can/EBrytecCan.cpp \

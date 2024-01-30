@@ -1,5 +1,3 @@
-#pragma once
-
 #include "InputModuleRev2Defs.h"
 #include "fdcan.h"
 #include <stdint.h>

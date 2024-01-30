@@ -7,14 +7,17 @@
 #include "Usb.h"
 #include "stm32g4xx_hal.h"
 #include <stdint.h>
+#include "spi.h"
+#include "Fram.h"
+#include "BoardHardware.h"
 
 // bool lastIgntionPowerState = false;
 
 void cppMain()
 {
-    // TODO
-    // BoardHardware::setSpiL9966();
-    L9966::init();
+    Fram::init(&hspi2);
+    BoardHardware::setSpiL9966();
+    L9966::init(&hspi2);
 
     Brytec::EBrytecApp::initalize();
 
