@@ -15,7 +15,9 @@
 
 void cppMain()
 {
+    BoardHardware::setSpiMemory();
     Fram::init(&hspi2);
+
     BoardHardware::setSpiL9966();
     L9966::init(&hspi2);
 
