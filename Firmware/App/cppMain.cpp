@@ -15,11 +15,11 @@
 
 void cppMain()
 {
-    BoardHardware::setSpiMemory();
-    Fram::init(&hspi2);
+    Fram::init(&hspi1);
 
-    BoardHardware::setSpiL9966();
     L9966::init(&hspi2);
+
+    // TODO init tle
 
     Brytec::EBrytecApp::initalize();
 

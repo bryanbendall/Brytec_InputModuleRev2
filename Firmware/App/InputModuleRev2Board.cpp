@@ -82,8 +82,6 @@ void BrytecBoard::setupCan(uint8_t index, CanSpeed::Types speed)
 
 void BrytecBoard::setupPin(uint16_t index, IOTypes::Types type)
 {
-    BoardHardware::setSpiL9966();
-
     switch (index) {
 
     // Inputs
@@ -140,15 +138,12 @@ void BrytecBoard::setupPin(uint16_t index, IOTypes::Types type)
 
 void BrytecBoard::shutdownAllPins()
 {
-    BoardHardware::setSpiL9966();
     L9966::softwareReset();
     L9966::init(&hspi2);
 }
 
 float BrytecBoard::getPinValue(uint16_t index, IOTypes::Types type)
 {
-    BoardHardware::setSpiL9966();
-
     switch (index) {
 
         // Inputs
@@ -224,13 +219,11 @@ void BrytecBoard::sendBrytecCanUsb(const CanFrame& frame)
 
 void BrytecBoard::ReserveConfigSize(uint16_t size)
 {
-    BoardHardware::setSpiMemory();
     Fram::write(0, (uint8_t*)&size, 2);
 }
 
 void BrytecBoard::updateConfig(uint8_t* data, uint32_t size, uint32_t offset)
 {
-    BoardHardware::setSpiMemory();
     // Add room for storing the size
     Fram::write(offset + 2, data, size);
 }
@@ -250,7 +243,6 @@ void BrytecBoard::getTemplateData(uint8_t* dest, uint32_t offset, uint32_t lengt
 
 uint32_t BrytecBoard::getConfigSize()
 {
-    BoardHardware::setSpiMemory();
     uint16_t dataSize;
     Fram::read(0, (uint8_t*)&dataSize, 2);
     return dataSize;
@@ -258,7 +250,6 @@ uint32_t BrytecBoard::getConfigSize()
 
 void BrytecBoard::getConfigData(uint8_t* dest, uint32_t offset, uint32_t length)
 {
-    BoardHardware::setSpiMemory();
     Fram::read(offset + 2, dest, length);
 }
 }

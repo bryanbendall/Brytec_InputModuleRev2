@@ -54,11 +54,16 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, Can1Silent_Pin|L9966_Rst_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, TLE94112_EN_Pin|Memory_Hold_Pin|Memory_Wp_Pin|Memory_SS_Pin
-                          |SPI_SS_L9966_Pin|L9966_Sync_Pin|User_Led_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, TLE94112_EN_Pin|L9966_Sync_Pin|User_Led_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, SPI2_SS_TLE94112_Pin|Can2Silent_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, Memory_Hold_Pin|Memory_Wp_Pin|Memory_SS_Pin|SPI_SS_L9966_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(SPI2_SS_TLE94112_GPIO_Port, SPI2_SS_TLE94112_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(Can2Silent_GPIO_Port, Can2Silent_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PCPin PCPin */
   GPIO_InitStruct.Pin = Can1Silent_Pin|L9966_Rst_Pin;
