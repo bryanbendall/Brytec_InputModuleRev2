@@ -15,6 +15,8 @@
 
 void cppMain()
 {
+    DWT_Delay_Init();
+
     Fram::init(&hspi1);
 
     L9966::init(&hspi2);

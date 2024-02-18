@@ -104,6 +104,7 @@ BrytecConfigEmbedded/Nodes/EDelayNode.cpp \
 BrytecConfigEmbedded/Nodes/EFinalValueNode.cpp \
 BrytecConfigEmbedded/Nodes/EHolleyBroadcastNode.cpp \
 BrytecConfigEmbedded/Nodes/EInitialValueNode.cpp \
+BrytecConfigEmbedded/Nodes/EInterpolateNode.cpp \
 BrytecConfigEmbedded/Nodes/EInvertNode.cpp \
 BrytecConfigEmbedded/Nodes/EMapValueNode.cpp \
 BrytecConfigEmbedded/Nodes/EMathNode.cpp \

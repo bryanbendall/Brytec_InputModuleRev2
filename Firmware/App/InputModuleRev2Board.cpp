@@ -138,6 +138,7 @@ void BrytecBoard::setupPin(uint16_t index, IOTypes::Types type)
 
 void BrytecBoard::shutdownAllPins()
 {
+    HAL_GPIO_WritePin(User_Led_GPIO_Port, User_Led_Pin, GPIO_PIN_RESET);
     L9966::softwareReset();
     L9966::init(&hspi2);
 }
