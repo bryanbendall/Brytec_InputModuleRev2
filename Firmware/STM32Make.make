@@ -128,6 +128,7 @@ Stm32Files/CanBus.cpp \
 Stm32Files/Fram.cpp \
 Stm32Files/FramDeserializer.cpp \
 Stm32Files/L9966.cpp \
+Stm32Files/TLE94112.cpp \
 Stm32Files/Usb.cpp
 
 

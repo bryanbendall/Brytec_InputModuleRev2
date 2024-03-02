@@ -7,6 +7,7 @@
 #include "FramDeserializer.h"
 #include "InputModuleRev2Defs.h"
 #include "L9966Input.h"
+#include "TLE94112.h"
 #include "Usb.h"
 #include "gpio.h"
 
@@ -139,8 +140,9 @@ void BrytecBoard::setupPin(uint16_t index, IOTypes::Types type)
 void BrytecBoard::shutdownAllPins()
 {
     HAL_GPIO_WritePin(User_Led_GPIO_Port, User_Led_Pin, GPIO_PIN_RESET);
-    L9966::softwareReset();
-    L9966::init(&hspi2);
+    // L9966::softwareReset();
+    // L9966::init(&hspi2);
+    TLE94112::setAllOff();
 }
 
 float BrytecBoard::getPinValue(uint16_t index, IOTypes::Types type)
@@ -194,8 +196,51 @@ float BrytecBoard::getPinVoltage(uint16_t index)
 
 float BrytecBoard::getPinCurrent(uint16_t index)
 {
-    // Not used
-    return 0.0f;
+    bool overCurrent = false;
+
+    switch (index) {
+    case BT_PIN_Pin_6:
+        overCurrent = TLE94112::isOverCurrent(5);
+        break;
+    case BT_PIN_Pin_7:
+        overCurrent = TLE94112::isOverCurrent(9);
+        break;
+    case BT_PIN_Pin_8:
+        overCurrent = TLE94112::isOverCurrent(4);
+        break;
+    case BT_PIN_Pin_9:
+        overCurrent = TLE94112::isOverCurrent(3);
+        break;
+    case BT_PIN_Pin_14:
+        overCurrent = TLE94112::isOverCurrent(7);
+        break;
+    case BT_PIN_Pin_15:
+        overCurrent = TLE94112::isOverCurrent(6);
+        break;
+    case BT_PIN_Pin_16:
+        overCurrent = TLE94112::isOverCurrent(10);
+        break;
+    case BT_PIN_Pin_17:
+        overCurrent = TLE94112::isOverCurrent(11);
+        break;
+    case BT_PIN_Pin_23:
+        overCurrent = TLE94112::isOverCurrent(12);
+        break;
+    case BT_PIN_Pin_24:
+        overCurrent = TLE94112::isOverCurrent(2);
+        break;
+    case BT_PIN_Pin_25:
+        overCurrent = TLE94112::isOverCurrent(8);
+        break;
+
+    default:
+        break;
+    }
+
+    if (overCurrent)
+        return 99.0f;
+    else
+        return 0.0f;
 }
 
 void BrytecBoard::setPinValue(uint16_t index, IOTypes::Types type, float value)
@@ -203,6 +248,59 @@ void BrytecBoard::setPinValue(uint16_t index, IOTypes::Types type, float value)
     if (index == BT_PIN_Onboard_LED) {
         HAL_GPIO_WritePin(User_Led_GPIO_Port, User_Led_Pin, (GPIO_PinState)(value > 0.001f));
         return;
+    }
+
+    TLE94112::OutputDrive drive = TLE94112::OutputDrive::Off;
+    if (value > 0.001f) {
+        switch (type) {
+        case IOTypes::Types::Output_Ground:
+            drive = TLE94112::OutputDrive::LowSide;
+            break;
+        case IOTypes::Types::Output_Batt:
+            drive = TLE94112::OutputDrive::HighSide;
+            break;
+        default:
+            break;
+        }
+    }
+
+    switch (index) {
+    case BT_PIN_Pin_6:
+        TLE94112::setOutput(5, drive);
+        break;
+    case BT_PIN_Pin_7:
+        TLE94112::setOutput(9, drive);
+        break;
+    case BT_PIN_Pin_8:
+        TLE94112::setOutput(4, drive);
+        break;
+    case BT_PIN_Pin_9:
+        TLE94112::setOutput(3, drive);
+        break;
+    case BT_PIN_Pin_14:
+        TLE94112::setOutput(7, drive);
+        break;
+    case BT_PIN_Pin_15:
+        TLE94112::setOutput(6, drive);
+        break;
+    case BT_PIN_Pin_16:
+        TLE94112::setOutput(10, drive);
+        break;
+    case BT_PIN_Pin_17:
+        TLE94112::setOutput(11, drive);
+        break;
+    case BT_PIN_Pin_23:
+        TLE94112::setOutput(12, drive);
+        break;
+    case BT_PIN_Pin_24:
+        TLE94112::setOutput(2, drive);
+        break;
+    case BT_PIN_Pin_25:
+        TLE94112::setOutput(8, drive);
+        break;
+
+    default:
+        break;
     }
 }
 

@@ -1,15 +1,16 @@
 #include "cppMain.h"
 
+#include "BoardHardware.h"
 #include "CanBus.h"
 #include "EBrytecApp.h"
+#include "Fram.h"
 #include "L9966.h"
+#include "TLE94112.h"
 #include "UsDelay.h"
 #include "Usb.h"
+#include "spi.h"
 #include "stm32g4xx_hal.h"
 #include <stdint.h>
-#include "spi.h"
-#include "Fram.h"
-#include "BoardHardware.h"
 
 // bool lastIgntionPowerState = false;
 
@@ -19,9 +20,9 @@ void cppMain()
 
     Fram::init(&hspi1);
 
-    L9966::init(&hspi2);
+    // L9966::init(&hspi2);
 
-    // TODO init tle
+    TLE94112::init();
 
     Brytec::EBrytecApp::initalize();
 
