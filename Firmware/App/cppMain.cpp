@@ -12,16 +12,16 @@
 #include "stm32g4xx_hal.h"
 #include <stdint.h>
 
-// bool lastIgntionPowerState = false;
-
 void cppMain()
 {
     DWT_Delay_Init();
 
     Fram::init(&hspi1);
 
-    // L9966::init(&hspi2);
+    BoardHardware::setSpiL9966();
+    L9966::init(&hspi2);
 
+    BoardHardware::setSpiTLE94112();
     TLE94112::init();
 
     Brytec::EBrytecApp::initalize();

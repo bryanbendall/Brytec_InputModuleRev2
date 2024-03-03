@@ -83,8 +83,9 @@ void BrytecBoard::setupCan(uint8_t index, CanSpeed::Types speed)
 
 void BrytecBoard::setupPin(uint16_t index, IOTypes::Types type)
 {
-    switch (index) {
+    BoardHardware::setSpiL9966();
 
+    switch (index) {
     // Inputs
     case BT_PIN_Pin_10:
         in15::setupType(type);
@@ -140,15 +141,23 @@ void BrytecBoard::setupPin(uint16_t index, IOTypes::Types type)
 void BrytecBoard::shutdownAllPins()
 {
     HAL_GPIO_WritePin(User_Led_GPIO_Port, User_Led_Pin, GPIO_PIN_RESET);
-    // L9966::softwareReset();
-    // L9966::init(&hspi2);
+
+    BoardHardware::setSpiL9966();
+    L9966::softwareReset();
+    L9966::init(&hspi2);
+
+    BoardHardware::setSpiTLE94112();
     TLE94112::setAllOff();
 }
 
 float BrytecBoard::getPinValue(uint16_t index, IOTypes::Types type)
 {
-    switch (index) {
+    if (!BoardHardware::getIgntionPowerState())
+        return 0.0f;
 
+    BoardHardware::setSpiL9966();
+
+    switch (index) {
         // Inputs
     case BT_PIN_Pin_10:
         return in15::getValue(type);
@@ -196,6 +205,8 @@ float BrytecBoard::getPinVoltage(uint16_t index)
 
 float BrytecBoard::getPinCurrent(uint16_t index)
 {
+    BoardHardware::setSpiTLE94112();
+
     bool overCurrent = false;
 
     switch (index) {
@@ -250,6 +261,8 @@ void BrytecBoard::setPinValue(uint16_t index, IOTypes::Types type, float value)
         return;
     }
 
+    BoardHardware::setSpiTLE94112();
+
     TLE94112::OutputDrive drive = TLE94112::OutputDrive::Off;
     if (value > 0.001f) {
         switch (type) {
@@ -263,6 +276,9 @@ void BrytecBoard::setPinValue(uint16_t index, IOTypes::Types type, float value)
             break;
         }
     }
+
+    if (!BoardHardware::getIgntionPowerState())
+        drive = TLE94112::OutputDrive::Off;
 
     switch (index) {
     case BT_PIN_Pin_6:
