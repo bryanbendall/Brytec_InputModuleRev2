@@ -121,7 +121,6 @@ BrytecConfigEmbedded/Nodes/ESwitchNode.cpp \
 BrytecConfigEmbedded/Nodes/EToggleNode.cpp \
 BrytecConfigEmbedded/Nodes/ETwoStageNode.cpp \
 BrytecConfigEmbedded/Nodes/EValueNode.cpp \
-BrytecConfigEmbedded/Usb/UsbBuffer.cpp \
 BrytecConfigEmbedded/Usb/UsbDefs.cpp \
 BrytecConfigEmbedded/Utils/ENodeDeserializer.cpp \
 BrytecConfigEmbedded/Utils/ENodeGroup.cpp \

@@ -5,11 +5,17 @@
 #include "CanBus.h"
 #include "Fram.h"
 #include "FramDeserializer.h"
-#include "InputModuleRev2Defs.h"
 #include "L9966Input.h"
 #include "TLE94112.h"
 #include "Usb.h"
 #include "gpio.h"
+
+#define FIVE_VOLT_MOD 1
+#ifdef FIVE_VOLT_MOD
+#include "InputModuleRev2Defs-5Vmod.h"
+#else
+#include "InputModuleRev2Defs.h"
+#endif
 
 namespace Brytec {
 
@@ -83,6 +89,9 @@ void BrytecBoard::setupCan(uint8_t index, CanSpeed::Types speed)
 
 void BrytecBoard::setupPin(uint16_t index, IOTypes::Types type)
 {
+    if (!BoardHardware::getIgntionPowerState())
+        return;
+
     BoardHardware::setSpiL9966();
 
     switch (index) {
@@ -260,6 +269,36 @@ void BrytecBoard::setPinValue(uint16_t index, IOTypes::Types type, float value)
         HAL_GPIO_WritePin(User_Led_GPIO_Port, User_Led_Pin, (GPIO_PinState)(value > 0.001f));
         return;
     }
+
+#ifdef FIVE_VOLT_MOD
+    if (type == IOTypes::Types::Output_5V) {
+
+        if (!BoardHardware::getIgntionPowerState())
+            return;
+
+        BoardHardware::setSpiL9966();
+
+        auto pull = value > 0.001f ? L9966::IoPull::FiveVolt : L9966::IoPull::None;
+
+        switch (index) {
+        case BT_PIN_Pin_10:
+            L9966::setIoPull(4, pull, L9966::PullCurrent::mA10);
+            break;
+        case BT_PIN_Pin_11:
+            L9966::setIoPull(3, pull, L9966::PullCurrent::mA10);
+            break;
+        case BT_PIN_Pin_27:
+            L9966::setIoPull(5, pull, L9966::PullCurrent::mA10);
+            break;
+        case BT_PIN_Pin_28:
+            L9966::setIoPull(6, pull, L9966::PullCurrent::mA10);
+            break;
+        }
+
+        return;
+    }
+
+#endif
 
     BoardHardware::setSpiTLE94112();
 
