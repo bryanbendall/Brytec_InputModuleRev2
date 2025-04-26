@@ -75,9 +75,7 @@ excludes:
   - "**/Example/**"
   - "**/example/**"
   - "**_template.*"
-  - BrytecConfigEmbedded/Boards/ArduinoMegaTest.cpp
-  - BrytecConfigEmbedded/Boards/ArduinoUnoTest.cpp
-  - BrytecConfigEmbedded/Boards/DesktopSimulation.cpp
+  - BrytecConfigEmbedded/Deserializer/BinaryPathDeserializer.cpp
   - Stm32Files/PwmDriver.cpp
 
 # Include directories (directories containing .h or .hpp files)

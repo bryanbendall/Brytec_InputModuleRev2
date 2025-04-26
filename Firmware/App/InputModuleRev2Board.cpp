@@ -45,6 +45,16 @@ BinaryDeserializer* BrytecBoard::getDeserializer()
     return &deserializer;
 }
 
+void BrytecBoard::preUpdate()
+{
+}
+
+void BrytecBoard::postUpdate()
+{
+    BoardHardware::setSpiTLE94112();
+    TLE94112::setAllOutputs();
+}
+
 void BrytecBoard::error(EBrytecErrors error)
 {
     switch (error) {
